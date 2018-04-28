@@ -8,5 +8,6 @@ namespace CN
 {
     public class Producto
     {
+        public int idProducto { get; set; }
     }
 }
