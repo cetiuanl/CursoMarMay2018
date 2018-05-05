@@ -10,7 +10,7 @@ namespace CN
     {
         #region Propiedades
 
-        private string _nombreCompleto;
+        internal string _nombreCompleto;
 
         public string nombreCompleto
         {
@@ -19,8 +19,8 @@ namespace CN
         }
 
         public string direccion { get; set; }
-        
-        private DateTime _fechaNacimiento;
+
+        internal DateTime _fechaNacimiento;
 
         public DateTime fechaNacimiento
         {
