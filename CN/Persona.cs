@@ -18,7 +18,7 @@ namespace CN
             //set { _nombreCompleto = value; }
         }
 
-        public string direccion { get; set; }
+        public bool esActivo { get; set; }
 
         internal DateTime _fechaCreacion;
 
@@ -46,27 +46,14 @@ namespace CN
         #endregion
 
         #region Constructores
-
         public Persona(string _nombreCompleto,
-                        string _direccion,
+                        bool _esActivo,
                         DateTime _fechaCreacion)
         {
             this._nombreCompleto = _nombreCompleto;
-            this.direccion = _direccion;
+            this.esActivo = _esActivo;
             this._fechaCreacion = _fechaCreacion;
         }
-
-        #endregion
-
-        #region Metodos y Funciones
-        public virtual string descripcion()
-        {
-            string resultado = string.Format("Nombre: {0} - Direccion: {1} - Fecha Nacimiento: {2} - Edad: {3}",
-                nombreCompleto, direccion, fechaCreacion, edad);
-
-            return resultado;
-        }
-
-        #endregion        
+        #endregion     
     }
 }

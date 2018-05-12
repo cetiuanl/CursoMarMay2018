@@ -9,39 +9,29 @@ using System.Threading.Tasks;
 
 namespace CN
 {
-    public class Empleado : Persona
+    public class Cliente : Persona
     {
         #region Propiedades
-        public string usuario { get; }
-        public int idEmpleado { get; }
-        public string contrasena { get; }
-        public int idRol { get; }
+        public int idCliente { get; }
+        public string RFC { get; }
         #endregion
 
         #region Constructores
-        public Empleado(string _usuario,
-            int _idEmpleado,
-            string _contrasena,
-            int _idRol,
-            string _nombreCompleto)
+        public Cliente(int _idCliente, string _RFC, string _nombreCompleto)
             : base(_nombreCompleto, true, DateTime.Now)
         {
-            this.usuario = _usuario;
-            this.idEmpleado = _idEmpleado;
-            this.contrasena = _contrasena;
-            this.idRol = _idRol;
-        }
-        public Empleado(DataRow fila)
-            : base(fila.Field<string>("nombreCompleto"),
-            fila.Field<bool>("esActivo"),
-            fila.Field<DateTime>("fechaCreacion"))
-        {
-            usuario = fila.Field<string>("usuario");
-            idEmpleado = fila.Field<int>("idEmpleado");
-            contrasena = fila.Field<string>("contrasena");
-            idRol = fila.Field<int>("idRol");
+            this.idCliente = _idCliente;
+            this.RFC = _RFC;            
         }
 
+        public Cliente(DataRow fila) : 
+            base(fila.Field<string>("nombreCompleto"), 
+                fila.Field<bool>("esActivo"), 
+                fila.Field<DateTime>("fechaCreacion"))
+        {
+            this.idCliente = fila.Field<int>("idCliente");
+            this.RFC = fila.Field<string>("RFC");
+        }
         #endregion
 
         #region Metodos y Funciones 
@@ -49,17 +39,15 @@ namespace CN
         {
             List<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Add(new SqlParameter("@nombreCompleto", nombreCompleto));
-            parametros.Add(new SqlParameter("@usuario", usuario));
-            parametros.Add(new SqlParameter("@contrasena", contrasena));
-            parametros.Add(new SqlParameter("@idRol", idRol));
-            
+            parametros.Add(new SqlParameter("@RFC", RFC));
+
             try
             {
-                if (idEmpleado > 0)
+                if (idCliente > 0)
                 {
                     //Update                    
-                    parametros.Add(new SqlParameter("@idEmpleado", idEmpleado));
-                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPUEmpleados", parametros.ToArray()) == 0)
+                    parametros.Add(new SqlParameter("@idCliente", idCliente));
+                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPUClientes", parametros.ToArray()) == 0)
                     {
                         throw new Exception("No se actualizo el registro");
                     }
@@ -67,7 +55,7 @@ namespace CN
                 else
                 {
                     //Insert
-                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPIEmpleados", parametros.ToArray()) == 0)
+                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPIClientes", parametros.ToArray()) == 0)
                     {
                         throw new Exception("No se creo el registro");
                     }
@@ -82,16 +70,16 @@ namespace CN
 #endif
             }
         }
-        public static void desactivar(int idEmpleado, bool esActivo = false)
+        public static void desactivar(int idCliente, bool esActivo = false)
         {
             List<SqlParameter> parametros = new List<SqlParameter>();
 
-            parametros.Add(new SqlParameter("@idEmpleado", idEmpleado));
+            parametros.Add(new SqlParameter("@idCliente", idCliente));
             parametros.Add(new SqlParameter("@esActivo", esActivo));
 
             try
             {
-                if (DataBaseHelper.ExecuteNonQuery("dbo.SPDEmpleados", parametros.ToArray()) == 0)
+                if (DataBaseHelper.ExecuteNonQuery("dbo.SPDClientes", parametros.ToArray()) == 0)
                 {
                     throw new Exception("No se desactivo el registro");
                 }
@@ -105,22 +93,22 @@ namespace CN
 #endif
             }
         }
-        public static Empleado buscarPorID(int idEmpleado)
+        public static Cliente buscarPorID(int idCliente)
         {
             List<SqlParameter> parametros = new List<SqlParameter>();
-            parametros.Add(new SqlParameter("@idEmpleado", idEmpleado));
+            parametros.Add(new SqlParameter("@idCliente", idCliente));
 
             DataTable dt = new DataTable();
 
             try
             {
-                DataBaseHelper.Fill(dt, "dbo.SPSEmpleados", parametros.ToArray());
+                DataBaseHelper.Fill(dt, "dbo.SPSClientes", parametros.ToArray());
 
-                Empleado resultado = null;
+                Cliente resultado = null;
 
                 foreach (DataRow fila in dt.Rows)
                 {
-                    resultado = new Empleado(fila);
+                    resultado = new Cliente(fila);
                     break;
                 }
 
@@ -140,7 +128,7 @@ namespace CN
 #endif
             }
         }
-        public static List<Empleado> traerTodos(bool filtrarSoloActivos = false)
+        public static List<Cliente> traerTodos(bool filtrarSoloActivos = false)
         {
             List<SqlParameter> parametros = new List<SqlParameter>();
 
@@ -153,13 +141,13 @@ namespace CN
 
             try
             {
-                DataBaseHelper.Fill(dt, "dbo.SPSEmpleados", parametros.ToArray());
+                DataBaseHelper.Fill(dt, "dbo.SPSClientes", parametros.ToArray());
 
-                List<Empleado> listado = new List<Empleado>();
+                List<Cliente> listado = new List<Cliente>();
 
                 foreach (DataRow fila in dt.Rows)
                 {
-                    listado.Add(new Empleado(fila));
+                    listado.Add(new Cliente(fila));
                 }
 
                 return listado;
