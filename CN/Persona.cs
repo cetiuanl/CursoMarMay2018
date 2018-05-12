@@ -20,21 +20,21 @@ namespace CN
 
         public string direccion { get; set; }
 
-        internal DateTime _fechaNacimiento;
+        internal DateTime _fechaCreacion;
 
-        public DateTime fechaNacimiento
+        public DateTime fechaCreacion
         {
-            get { return _fechaNacimiento; }
-            //set { _fechaNacimiento = value; }
+            get { return _fechaCreacion; }
+            //set { _fechaCreacion = value; }
         }
-        
+
         public int edad
         {
             get {
                 DateTime hoy = DateTime.Today;
-                int edad = hoy.Year - fechaNacimiento.Year;
+                int edad = hoy.Year - fechaCreacion.Year;
 
-                if (hoy < fechaNacimiento.AddYears(edad))
+                if (hoy < fechaCreacion.AddYears(edad))
                 {
                     edad--;
                 }
@@ -49,11 +49,11 @@ namespace CN
 
         public Persona(string _nombreCompleto,
                         string _direccion,
-                        DateTime _fechaNacimiento)
+                        DateTime _fechaCreacion)
         {
             this._nombreCompleto = _nombreCompleto;
             this.direccion = _direccion;
-            this._fechaNacimiento = _fechaNacimiento;
+            this._fechaCreacion = _fechaCreacion;
         }
 
         #endregion
@@ -62,7 +62,7 @@ namespace CN
         public virtual string descripcion()
         {
             string resultado = string.Format("Nombre: {0} - Direccion: {1} - Fecha Nacimiento: {2} - Edad: {3}",
-                nombreCompleto, direccion, fechaNacimiento, edad);
+                nombreCompleto, direccion, fechaCreacion, edad);
 
             return resultado;
         }

@@ -57,7 +57,7 @@ namespace CN
                 {
                     //Update                    
                     parametros.Add(new SqlParameter("@idProducto", idProducto));                    
-                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPUProducto", parametros.ToArray()) == 0)
+                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPUProductos", parametros.ToArray()) == 0)
                     {
                         throw new Exception("No se actualizo el registro");
                     }
@@ -65,7 +65,7 @@ namespace CN
                 else
                 {
                     //Insert
-                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPIProducto", parametros.ToArray()) == 0)
+                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPIProductos", parametros.ToArray()) == 0)
                     {
                         throw new Exception("No se creo el registro");
                     }
@@ -89,7 +89,7 @@ namespace CN
 
             try
             {
-                if (DataBaseHelper.ExecuteNonQuery("dbo.SPDProducto", parametros.ToArray()) == 0)
+                if (DataBaseHelper.ExecuteNonQuery("dbo.SPDProductos", parametros.ToArray()) == 0)
                 {
                     throw new Exception("No se desactivo el registro");
                 }
@@ -171,6 +171,6 @@ namespace CN
 #endif
             }
         }
-#endregion
+        #endregion
     }
 }
