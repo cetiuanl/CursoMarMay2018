@@ -11,8 +11,18 @@ namespace PruebasUnitarias
         [TestMethod]
         public void traerRoles()
         {
-            List<Rol> listado = Rol.traerTodos();            
+            List<Rol> listado = Rol.traerTodos();          
             Assert.AreEqual<bool>(true, listado.Count > 0);
+        }
+
+        [TestMethod]
+        public void guardar()
+        {
+            Rol oRol = new Rol("nombre", 0, "descripcion");
+
+           // oRol.g
+
+            //Assert.AreEqual<bool>(true, listado.Count > 0);
         }
     }
 }

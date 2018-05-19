@@ -8,10 +8,10 @@ namespace CD
 {
     public static class DataBaseHelper
     {
-#if DEBUG
-        static string _connectionString = "Server='148.234.16.54\\LOCAL';Database=dbPuntoVenta;User Id=ceti;Password=ceti;";
+#if DEBUG        
+        static string _connectionString = "Server=T6301\\LOCAL;Database=dbPuntoVenta;Trusted_Connection=True;";
 #else
-        static string _connectionString = "Server=148.234.16.54;Database=dbPuntoVenta;User Id=ceti;Password=ceti;";
+        static string _connectionString = "Server=148.234.16.54\\LOCAL;Database=dbPuntoVenta;User Id=ceti;Password=ceti;";
 #endif
 
         #region "FILL DATA TABLE"

@@ -15,34 +15,38 @@ namespace CN
         public string nombre { get; }
         public int idRol { get; }
         public string descripcion { get; }
-        public bool esAtivo { get; }
+        public bool esActivo { get; }
         public DateTime fechaCreacion { get; }
         #endregion
 
         #region Constructores
-        public Rol(string _nombre, int _idRol, string _descripcion)
+        public Rol(string _nombre, int _idRol, string _descripcion, bool _esActivo)
         {
             this.nombre = _nombre;
             this.descripcion = _descripcion;
             this.idRol = _idRol;
+            this.esActivo = _esActivo;
         }
         public Rol(DataRow fila)
         {
-            nombre = fila.Field<string>("nombre");
             idRol = fila.Field<int>("idRol");
+            nombre = fila.Field<string>("nombre");            
             descripcion = fila.Field<string>("descripcion");
-            esAtivo = fila.Field<bool>("esActivo");
+            esActivo = fila.Field<bool>("esActivo");            
         }
         #endregion
-        
+
         #region Metodos Y Funciones 
+        /// <summary>
+        /// Se utiliza para guardar un registro nuevo o existente.
+        /// </summary>
         public void guardar()
         {
             List<SqlParameter> parametros = new List<SqlParameter>();
 
             parametros.Add(new SqlParameter("@nombre", nombre));
             parametros.Add(new SqlParameter("@descripcion", descripcion));
-            parametros.Add(new SqlParameter("@esActivo", esAtivo));
+            parametros.Add(new SqlParameter("@esActivo", esActivo));
 
             try
             {
@@ -133,7 +137,11 @@ namespace CN
 #endif
             }
         }
-
+        /// <summary>
+        /// Se utiliza para traer todos los roles.
+        /// </summary>
+        /// <param name="filtrarSoloActivos">Se utiliza para filtrar solo activo</param>
+        /// <returns>Listado de Roles</returns>
         public static List<Rol> traerTodos(bool filtrarSoloActivos = false)
         {
             List<SqlParameter> parametros = new List<SqlParameter>();
