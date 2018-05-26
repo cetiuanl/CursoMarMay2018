@@ -25,7 +25,10 @@ namespace HomeDepot
 
         private void cargarDatos()
         {
-            dgvRoles.DataSource = Rol.traerTodos(true);
+            var resultado = Rol.traerTodos(true).
+                                OrderBy(item => item.fechaCreacion).ToList();
+            
+            dgvRoles.DataSource = resultado;
         }
 
         private void limpiarDatos()
@@ -45,7 +48,7 @@ namespace HomeDepot
             
             try
             {
-                Rol oRol = new Rol(nombre, idRol, descripcion);
+                var oRol = new Rol(nombre, idRol, descripcion);
                 oRol.guardar();
                 MessageBox.Show("Proceso exitoso!");
                 cargarDatos();

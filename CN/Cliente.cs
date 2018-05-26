@@ -40,7 +40,7 @@ namespace CN
             List<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Add(new SqlParameter("@nombreCompleto", nombreCompleto));
             parametros.Add(new SqlParameter("@RFC", RFC));
-
+            
             try
             {
                 if (idCliente > 0)

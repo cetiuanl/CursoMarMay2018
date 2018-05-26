@@ -71,6 +71,7 @@
             this.Name = "frmPrincipal";
             this.Text = "Sistema de Ventas  - HOME DEPOT 2018 v3.1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

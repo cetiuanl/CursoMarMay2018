@@ -180,6 +180,9 @@
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.dgvRoles);
+            this.MaximumSize = new System.Drawing.Size(739, 504);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(739, 504);
             this.Name = "frmRoles";
             this.Text = "Roles";
             this.Load += new System.EventHandler(this.frmRoles_Load);

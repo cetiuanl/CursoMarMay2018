@@ -26,7 +26,7 @@ namespace HomeDepot
             }
             else
             {
-                frmRoles vRoles = new frmRoles();
+                var vRoles = new frmRoles();
                 vRoles.MdiParent = this;
                 vRoles.Show();
             }            
@@ -37,6 +37,11 @@ namespace HomeDepot
             Form vRoles = new Form();
             vRoles.MdiParent = this;
             vRoles.Show();
+        }
+
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
