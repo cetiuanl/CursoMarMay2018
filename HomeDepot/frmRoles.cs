@@ -25,7 +25,7 @@ namespace HomeDepot
 
         private void cargarDatos()
         {
-            dgvRoles.DataSource = Rol.traerTodos();
+            dgvRoles.DataSource = Rol.traerTodos(true);
         }
 
         private void limpiarDatos()
@@ -42,12 +42,10 @@ namespace HomeDepot
 
             int idRol;
             int.TryParse(txtIdRol.Text, out idRol);
-
-            bool esActivo = chkEsActivo.Checked;
-
+            
             try
             {
-                Rol oRol = new Rol(nombre, idRol, descripcion, esActivo);
+                Rol oRol = new Rol(nombre, idRol, descripcion);
                 oRol.guardar();
                 MessageBox.Show("Proceso exitoso!");
                 cargarDatos();
@@ -74,12 +72,31 @@ namespace HomeDepot
             }
             
             string idRol = e.Row.Cells["idRol"].Value.ToString();
-            string strEsActivo = e.Row.Cells["esActivo"].Value.ToString();            
+            //string strEsActivo = e.Row.Cells["esActivo"].Value.ToString();            
 
             txtIdRol.Text = idRol;            
             txtNombre.Text = nombre;
             txtDescripcion.Text = descripcion;
-            chkEsActivo.Checked = (strEsActivo == "True");
+            //chkEsActivo.Checked = (strEsActivo == "True");
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            int idRol;
+            if (int.TryParse(txtIdRol.Text, out idRol))
+            {
+                try
+                {
+                    Rol.desactivar(idRol);
+                    MessageBox.Show("Proceso exitoso!");
+                    cargarDatos();
+                    limpiarDatos();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }                
+            }
         }
     }
 }

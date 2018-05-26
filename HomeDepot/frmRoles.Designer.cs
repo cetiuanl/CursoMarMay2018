@@ -40,7 +40,6 @@
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idRol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvRoles = new System.Windows.Forms.DataGridView();
-            this.chkEsActivo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoles)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,6 +61,7 @@
             this.btnEliminar.TabIndex = 2;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // txtNombre
             // 
@@ -154,24 +154,11 @@
             this.dgvRoles.TabIndex = 0;
             this.dgvRoles.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvRoles_RowStateChanged);
             // 
-            // chkEsActivo
-            // 
-            this.chkEsActivo.AutoSize = true;
-            this.chkEsActivo.Checked = true;
-            this.chkEsActivo.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkEsActivo.Location = new System.Drawing.Point(129, 372);
-            this.chkEsActivo.Name = "chkEsActivo";
-            this.chkEsActivo.Size = new System.Drawing.Size(104, 21);
-            this.chkEsActivo.TabIndex = 9;
-            this.chkEsActivo.Text = "¿Es Activo?";
-            this.chkEsActivo.UseVisualStyleBackColor = true;
-            // 
             // frmRoles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(721, 457);
-            this.Controls.Add(this.chkEsActivo);
             this.Controls.Add(this.lblDescripcion);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblIdRol);
@@ -203,6 +190,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idRol;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaCreacion;
-        private System.Windows.Forms.CheckBox chkEsActivo;
     }
 }
