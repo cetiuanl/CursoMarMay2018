@@ -16,7 +16,7 @@ namespace HomeDepot
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmRoles());
+            Application.Run(new frmPrincipal());
         }
     }
 }

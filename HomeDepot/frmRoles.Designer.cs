@@ -40,12 +40,13 @@
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idRol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvRoles = new System.Windows.Forms.DataGridView();
+            this.btnNuevo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoles)).BeginInit();
             this.SuspendLayout();
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(135, 399);
+            this.btnGuardar.Location = new System.Drawing.Point(213, 389);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(94, 36);
             this.btnGuardar.TabIndex = 1;
@@ -55,7 +56,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(274, 399);
+            this.btnEliminar.Location = new System.Drawing.Point(344, 389);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(78, 36);
             this.btnEliminar.TabIndex = 2;
@@ -154,11 +155,22 @@
             this.dgvRoles.TabIndex = 0;
             this.dgvRoles.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvRoles_RowStateChanged);
             // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Location = new System.Drawing.Point(118, 389);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(75, 36);
+            this.btnNuevo.TabIndex = 9;
+            this.btnNuevo.Text = "Nuevo";
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
             // frmRoles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(721, 457);
+            this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.lblDescripcion);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblIdRol);
@@ -190,5 +202,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idRol;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaCreacion;
+        private System.Windows.Forms.Button btnNuevo;
     }
 }
